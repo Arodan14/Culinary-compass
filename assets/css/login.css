@@ -1,0 +1,268 @@
+:root {
+    --login-width: 520px;
+    --login-radius: 20px;
+    --login-gap: 18px;
+}
+
+.theme-switch {
+    position: relative;
+}
+
+.theme-switch .material-symbols-outlined {
+    font-size: 24px;
+}
+
+html[data-theme="light"] .theme-switch .light-icon,
+html[data-theme="dark"] .theme-switch .dark-icon {
+    display: none;
+}
+
+html[data-theme="light"] .theme-switch .dark-icon,
+html[data-theme="dark"] .theme-switch .light-icon {
+    display: block;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    min-height: 100vh;
+    background-image:
+        linear-gradient(180deg, rgba(3, 18, 31, 0.74), rgba(3, 18, 31, 0.48)),
+        url("../images/wodeen-kitchen.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    border-radius: 999px;
+    pointer-events: none;
+    filter: blur(18px);
+    opacity: 0.55;
+    z-index: 0;
+}
+
+body::before {
+    top: 120px;
+    left: -90px;
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, rgba(247, 201, 72, 0.45), transparent 70%);
+}
+
+body::after {
+    right: -100px;
+    bottom: 80px;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(38, 128, 194, 0.38), transparent 72%);
+}
+
+main {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    align-items: center;
+    min-height: 100%;
+    padding: 48px 20px 120px;
+}
+
+section.login {
+    width: min(100%, var(--login-width));
+    margin-inline: auto;
+    color: var(--on-background);
+}
+
+section.login h1 {
+    margin: 0 0 14px;
+    font-family: "Dancing Script", cursive;
+    font-size: clamp(3.8rem, 5vw, 5.6rem);
+    line-height: 1.05;
+    color: var(--white);
+    text-align: center;
+    text-shadow: 0 12px 26px rgba(0, 0, 0, 0.22);
+}
+
+section.login form {
+    display: grid;
+    gap: var(--login-gap);
+    padding: 10px 0 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+section.login label {
+    display: block;
+    margin: 0 0 8px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+section.login input[type="email"],
+section.login input[type="password"] {
+    width: 100%;
+    height: 58px;
+    padding: 0 18px;
+    border-radius: var(--login-radius);
+    border: 1px solid var(--dark-input-outline);
+    background: rgba(20, 28, 36, 0.74);
+    color: var(--dark-on-background);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    outline: none;
+    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease, background-color 180ms ease;
+}
+
+section.login input[type="email"]::placeholder,
+section.login input[type="password"]::placeholder {
+    color: rgba(255, 255, 255, 0.44);
+}
+
+section.login input[type="email"]:hover,
+section.login input[type="password"]:hover {
+    border-color: var(--dark-input-outline-hover);
+    background: rgba(23, 33, 43, 0.82);
+}
+
+section.login input[type="email"]:focus,
+section.login input[type="password"]:focus {
+    border-color: var(--dark-primary);
+    box-shadow: 0 0 0 4px rgba(250, 219, 95, 0.14);
+    transform: translateY(-1px);
+}
+
+section.login button {
+    width: 100%;
+    height: 58px;
+    border: 0;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--dark-primary), var(--light-primary));
+    color: #1a1d14;
+    font-size: 1.55rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
+    transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+}
+
+section.login button:hover,
+section.login button:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 22px 40px rgba(0, 0, 0, 0.32);
+    filter: brightness(1.03);
+}
+
+section.login button:active {
+    transform: translateY(0);
+}
+
+p.message {
+    margin: -6px 0 0;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 1.25rem;
+    font-style: italic;
+}
+
+section.login input.error {
+    border-color: var(--dark-error);
+    box-shadow: 0 0 0 4px rgba(255, 88, 88, 0.12);
+}
+
+p.message.error {
+    color: #ffb5b5;
+}
+
+section.login form > p:last-child {
+    margin-top: -2px;
+    color: rgba(255, 255, 255, 0.82);
+    text-align: center;
+    font-size: 1.45rem;
+}
+
+section.login form > p:last-child a {
+    display: inline;
+    color: var(--dark-primary);
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(250, 219, 95, 0.55);
+    transition: color 180ms ease, border-color 180ms ease;
+}
+
+section.login form > p:last-child a:hover,
+section.login form > p:last-child a:focus-visible {
+    color: var(--white);
+    border-color: var(--white);
+}
+
+[data-theme="light"] section.login input[type="email"],
+[data-theme="light"] section.login input[type="password"] {
+    border-color: rgba(16, 42, 67, 0.18);
+    background: rgba(240, 244, 248, 0.92);
+    color: var(--light-on-background);
+    box-shadow: 0 10px 24px rgba(16, 42, 67, 0.08);
+}
+
+[data-theme="light"] section.login label,
+[data-theme="light"] p.message,
+[data-theme="light"] section.login form > p:last-child {
+    color: rgba(240, 244, 248, 0.92);
+}
+
+[data-theme="light"] section.login input[type="email"]::placeholder,
+[data-theme="light"] section.login input[type="password"]::placeholder {
+    color: rgba(16, 42, 67, 0.45);
+}
+
+[data-theme="light"] section.login input[type="email"]:hover,
+[data-theme="light"] section.login input[type="password"]:hover {
+    background: rgba(255, 255, 255, 0.98);
+}
+
+@media (min-width: 768px) {
+    .header {
+        justify-content: center;
+    }
+
+    .header .logo {
+        position: absolute;
+        left: 32px;
+    }
+
+    .header .navbar {
+        margin-inline: auto;
+    }
+
+    .header .navbar-list {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 767px) {
+    main {
+        padding: 30px 16px 110px;
+    }
+
+    section.login h1 {
+        margin-bottom: 10px;
+    }
+
+    section.login input[type="email"],
+    section.login input[type="password"],
+    section.login button {
+        height: 54px;
+    }
+}
+
+@media (min-width: 768px) {
+    main {
+        padding: 64px 24px 48px;
+    }
+}
